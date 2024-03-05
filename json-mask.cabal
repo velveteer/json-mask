@@ -1,0 +1,57 @@
+cabal-version: 3.0
+name: json-mask
+version: 0.1.0.0
+license: MIT
+license-file: LICENSE
+author: Josh Miller
+maintainer: notjoshmiller@gmail.com
+category: Web
+synopsis: "Filter JSON without changing structure"
+description:
+  "A simple library for filtering JSON using syntax inspired by Google's
+  Partial Response pattern. Field masks remove unnecessary values without
+  changing the structure of the JSON resource."
+
+build-type: Simple
+extra-doc-files:
+  CHANGELOG.md
+  README.md
+
+source-repository head
+  type: git
+  location: git@github.com:velveteer/json-mask.git
+
+common warnings
+  ghc-options: -Wall
+
+library
+  import: warnings
+  default-extensions:
+    LambdaCase
+    OverloadedStrings
+
+  exposed-modules: JSONMask
+  build-depends:
+    aeson >=2.2.1,
+    attoparsec >=0.14.4,
+    base >=4.17.2.1,
+    lens >=5.2.3,
+    lens-aeson >=1.2.3,
+    text >=2.0,
+
+  hs-source-dirs: src
+  default-language: GHC2021
+
+test-suite json-mask-test
+  import: warnings
+  default-language: GHC2021
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Main.hs
+  build-depends:
+    aeson,
+    base,
+    json-mask,
+    tasty ^>=1.5,
+    tasty-hunit ^>=0.10.1,
+    text,

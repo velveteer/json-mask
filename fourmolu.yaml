@@ -1,0 +1,4 @@
+indentation: 2
+function-arrows: leading
+column-limit: 90
+haddock-style: single-line
